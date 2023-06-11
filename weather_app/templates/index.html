@@ -1,1 +1,99 @@
-That's my django APP deployed with Railway.
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Weather API</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      text-align: center;
+    }
+
+    h1 {
+      color: #333;
+    }
+
+    .section {
+      background-color: #f5f5f5;
+      padding: 20px;
+      margin-bottom: 20px;
+      max-width: 80%;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    }
+
+    ul {
+      list-style-type: disc;
+      margin-left: 40px;
+      text-align: left;
+    }
+
+    li {
+      margin-bottom: 10px;
+    }
+
+    pre {
+      background-color: #fff;
+      padding: 10px;
+      overflow-x: auto;
+    }
+
+    .copy-button {
+      display: inline-block;
+      padding: 5px 10px;
+      background-color: #4CAF50;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+    }
+  </style>
+  <script>
+    function copyToClipboard() {
+      const codeBlock = document.querySelector('pre');
+      const range = document.createRange();
+      range.selectNode(codeBlock);
+      const selection = window.getSelection();
+      selection.removeAllRanges();
+      selection.addRange(range);
+      document.execCommand('copy');
+      selection.removeAllRanges();
+      alert('Copied to clipboard!');
+    }
+  </script>
+</head>
+<body>
+  <div class="section">
+    <h1>That's my Django Weather API App deployed with Railway.</h1>
+
+    <h2>Forecasts</h2>
+    <ul>
+      <li>You can see forecasts by adding "/forecasts" to the current URL.</li>
+      <li>To show a specific one, you can filter by typing, for example:
+        <ul>
+          <li>"/forecasts/?location=Florence"</li>
+          <li>"/forecasts/?location=Florence&date=2023-06-11"</li>
+          <li>"/forecasts/?location=Florence&date=2023-06-11&time=10:30:00"</li>
+        </ul>
+      </li>
+    </ul>
+
+    <h2>POST a New Record</h2>
+    <p>To POST a new record, type something like this in the "/forecast" page form:</p>
+    <pre>
+    { "location": "Florence",
+    "date": "2023-06-11",
+    "time": "10:30:00",
+    "temperature": "25.70",
+    "description": "Sunny" }
+    </pre>
+    <button class="copy-button" onclick="copyToClipboard()">Copy snippet</button>
+  </div>
+
+  Read more on README.md on my GitHub Page (https://github.com/niccoboa/)
+
+</body>
+</html>
