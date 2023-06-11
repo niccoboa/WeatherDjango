@@ -1,1 +1,1 @@
-web: gunicorn WeatherAPI.wsgi --log-file - 
+web: python manage.py makemigrations && pyton manage.py migrate && python manage.py collectstatic --noinput && gunicorn WeatherAPI.wsgi --log-file - 
