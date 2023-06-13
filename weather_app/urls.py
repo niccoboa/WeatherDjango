@@ -6,7 +6,7 @@ urlpatterns = [
     # API endpoints
     path('forecasts/', WeatherForecastInfo.as_view(), name='forecasts'),
     path('', views.homepage),
-    path('home/', views.homepage)
+    path('home/', views.homepage),
 ]
 
 

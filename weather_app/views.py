@@ -1,14 +1,9 @@
 from rest_framework import status
 from rest_framework.views import APIView
 from rest_framework.response import Response
-
+from rest_framework.permissions import IsAuthenticated
 from .models import WeatherForecast
 from .serializer import WeatherForecastSerializer
-
-from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth.decorators import login_required
-
 from django.shortcuts import render, redirect
 
 
@@ -17,6 +12,22 @@ def homepage(request):
     return render(request, 'index.html')
 
 class WeatherForecastInfo(APIView):
+    
+    def get_permissions(self):
+        if self.request.method in ['POST', 'DELETE']:
+            permission_classes = [IsAuthenticated]
+        else:
+            permission_classes = []
+
+        return [permission() for permission in permission_classes]
+
+    def handle_no_permission(self):
+        if self.request.method in ['POST', 'DELETE'] and not self.request.user.is_authenticated:
+            message = "Please log in to perform this action."
+            return Response({"detail": message}, status=403)
+        super().handle_no_permission()
+
+
     def get(self, request):
         # extracting attributes
         id = request.query_params.get('id')
@@ -112,4 +123,3 @@ class WeatherForecastInfo(APIView):
                 serializer.save()
                 return Response(serializer.data, status=status.HTTP_201_CREATED)
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-        
