@@ -6,7 +6,7 @@ date, and time. Utilize HTTP methods like GET to retrieve forecasts and POST to 
 
 
 ## Description
-The Weather Forecast API is a Django Rest Framework (DRF) based application that provides weather forecast information. It allows users to access weather forecasts based on location, date, and time. The API is built using Django and DRF and is deployed using Railway.
+The Weather Forecast API is a Django Rest Framework (DRF) based application that provides weather forecast information. It allows users to access weather forecasts based on location, date, and time. The API is built using Django and DRF and is deployed using Railway. You can test it [here]([https://link-url-here.org](https://web-production-5ae0.up.railway.app/))
 
 ## Installation
 To set up the Weather Forecast API, please follow these steps:
